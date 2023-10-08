@@ -28,8 +28,6 @@ The anatomy_path contains the directories of participants; each participant's na
 ├── ibs0001
 ├── ibs0002
 ├── ibs0003
-├── ibs0004
-├── ibs0005
       .
       .
 	  .
@@ -113,4 +111,9 @@ The structural connectome csv file is stored in a directory specified at the beg
 13. **Create Connectome:**
     - Generate a connectome using [tck2connectome](https://mrtrix.readthedocs.io/en/dev/reference/commands/tck2connectome.html) from the (refined) streamlines and store the connectome as a CSV file. The ROIs in the connectome correspond to the atlas specified while creating the connectome. We use the Desikan-Killany atlas with 68 cortical regions  and 16 subcortical regions  (including both left and right hemishpere) and thus, the connectome matrix is of size 84-by-84. 
 14. **Connectome folder**
-- Move the individual connectome csv file to the connectome folder. Since, in my project I deal with brain models for individual participants
+- Move the individual connectome csv file to the connectome folder. Since, in my project I deal with brain models for individual participants, I store the three connecome matrices for each participant. These matrices for one participant is displayed below.
+
+> Cortico_coritcal
+![Cortio-cortical connectome](figs/Cortico_cortical.png)
+
+
