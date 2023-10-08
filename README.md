@@ -1,7 +1,7 @@
 # Preprocessing of DTI Imaging Data
 
 This repository provdies a bash script for batch processing of DTI data.
-The steps in the script, briefly given below,  closely follow the preprocessing prcedure detailed in [^1],[^2] and [BATMAN tutorial (pdf)](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_8uL86OKBAxUwm1YBHZZkAwoQFnoECBMQAQ&url=https%3A%2F%2Fosf.io%2Fpm9ba%2Fdownload&usg=AOvVaw2ny6I6EJAnmb6aazFib86N&opi=89978449). The steps below correspond to the steps in the bash script.
+The steps in the script, briefly given below,  closely follow the preprocessing prcedure detailed in Oldham *et*.al  [^1], Deco *et*. al[^2] and [BATMAN tutorial (pdf)](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_8uL86OKBAxUwm1YBHZZkAwoQFnoECBMQAQ&url=https%3A%2F%2Fosf.io%2Fpm9ba%2Fdownload&usg=AOvVaw2ny6I6EJAnmb6aazFib86N&opi=89978449). The steps below correspond to the steps in the bash script.
 
 
 [^1]:[S. Oldham, A. Arnatkevic Iūtė, R. E. Smith, J. Tiego, M. A. Bellgrove, A. Fornito, The efficacy of different preprocessing steps in reducing motion-related confounds in diffusion MRI connectomics. NeuroImage 222, 117252 (2020).](https://www.sciencedirect.com/science/article/pii/S1053811920307382?via%3Dihub) 
