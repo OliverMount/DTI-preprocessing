@@ -115,5 +115,9 @@ The structural connectome csv file is stored in a directory specified at the beg
 
 > Cortico_coritcal
 ![Cortio-cortical connectome](figs/Cortico_cortical.png)
+> Cortico_coritcal
+![Subcortio-subcortical connectome](figs/Subcortico_subcortical.png)
+> Thalamo_coritcal
+![Thalamo-cortical connectome](figs/Thalamo_cortical.png)
 
 
