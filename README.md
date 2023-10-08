@@ -1,18 +1,75 @@
 # Preprocessing of DTI Imaging Data
 
-This repository provdies a bash script for batch processing of DTI data.
-The steps in the script, briefly given below,  closely follow the preprocessing prcedure detailed in Oldham *et*.al  [^1], Deco *et*. al[^2] and [BATMAN tutorial (pdf)](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_8uL86OKBAxUwm1YBHZZkAwoQFnoECBMQAQ&url=https%3A%2F%2Fosf.io%2Fpm9ba%2Fdownload&usg=AOvVaw2ny6I6EJAnmb6aazFib86N&opi=89978449). The steps below correspond to the steps in the bash script.
+This repository provides a bash script (DTIprocess.sh) for batch processing of DTI data.
+The processing steps in the script, briefly given below, closely follow the preprocessing procedure detailed in Oldham *et al.*, [^1], Deco *et al.*, [^2] and [BATMAN tutorial (pdf)](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwj_8uL86OKBAxUwm1YBHZZkAwoQFnoECBMQAQ&url=https%3A%2F%2Fosf.io%2Fpm9ba%2Fdownload&usg=AOvVaw2ny6I6EJAnmb6aazFib86N&opi=89978449).
 
+[^1]: [S. Oldham, A. Arnatkevic Iūtė, R. E. Smith, J. Tiego, M. A. Bellgrove, A. Fornito, The efficacy of different preprocessing steps in reducing motion-related confounds in diffusion MRI connectomics. NeuroImage 222, 117252 (2020).](https://www.sciencedirect.com/science/article/pii/S1053811920307382?via%3Dihub)
+[^2]: [Gustavo Deco et al., Dynamical consequences of regional heterogeneity in the brain's transcriptional landscape. Sci. Adv. 7, eabf4752 (2021). DOI: 10.1126/sciadv.abf4752](https://www.science.org/doi/10.1126/sciadv.abf4752)
 
-[^1]:[S. Oldham, A. Arnatkevic Iūtė, R. E. Smith, J. Tiego, M. A. Bellgrove, A. Fornito, The efficacy of different preprocessing steps in reducing motion-related confounds in diffusion MRI connectomics. NeuroImage 222, 117252 (2020).](https://www.sciencedirect.com/science/article/pii/S1053811920307382?via%3Dihub) 
-[^2]: [Gustavo Deco et al. ,Dynamical consequences of regional heterogeneity in the brain’s transcriptional landscape.Sci. Adv.7,eabf4752(2021).DOI:10.1126/sciadv.abf4752](https://www.science.org/doi/10.1126/sciadv.abf4752)
+## Before running the bash script...
 
+Before running the script, make sure:
+1. Software(s) needed are installed, and path settings are done at the beginning of the script.
+2. Make sure the raw DTI data is in the RawDicom directory, and T1 files are in the nifti directory as indicated below. (Please also see the for details where these directories are formed).
 
+## Software(s) needed and path settings
 
-## Software needed
-The DTI preprocessing needs [MRtrix](https://mrtrix.readthedocs.io/en/3.0.4/index.html) (heavily used), [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki), [ANTS](https://picsl.upenn.edu/software/ants/), and [Freesurfer](https://surfer.nmr.mgh.harvard.edu). They must be installed on your computer before analysis. Please edit the path settings at the beginning of the shell script according to the path the softwares are installed on your computer.
+The DTI preprocessing requires [MRtrix](https://mrtrix.readthedocs.io/en/3.0.4/index.html) (heavily used), [FSL](https://fsl.fmrib.ox.ac.uk/fsl/fslwiki), [ANTS](https://picsl.upenn.edu/software/ants/), and [Freesurfer](https://surfer.nmr.mgh.harvard.edu). They must be installed on your computer before analysis.
+
+Please edit the paths setting at the beginning of the shell script according to the path where the softwares are installed on your computer.
 
 In the IBS heterobrainx workstation, all the necessary software is installed, and preprocessing would begin smoothly and would take nearly 2 hours for each participant to extract the fiber tracks.
+
+## Directory settings
+
+The anatomy_path contains the directories of participants; each participant's name begins with ibsxxxx. For example, if you have 25 participants, then the anatomy_path must have the following folders:
+
+```
+├── ibs0001
+├── ibs0002
+├── ibs0003
+├── ibs0004
+├── ibs0005
+      .
+      .
+	  .
+
+├── ibs0024
+└── ibs0025
+```
+
+Inside each participant's directory, there must be directories with the name RawDicom that have the following structure:
+
+```
+├── ibs0001
+│   └── RawDicom
+            HEAD_PI_CNIR_IBS_20220805_100824_145000
+                ├── 64CH_LOCALIZER_0001
+                ├── DTI_SMS_64DIR_2_0ISO_0002
+                ├── DTI_SMS_64DIR_2_0ISO_ADC_0003
+                ├── DTI_SMS_64DIR_2_0ISO_COLFA_0006
+                ├── DTI_SMS_64DIR_2_0ISO_FA_0005
+                ├── DTI_SMS_64DIR_2_0ISO_TENSOR_0007
+                ├── DTI_SMS_64DIR_2_0ISO_TRACEW_0004
+                ├── PA_INVERT_DTI_SMS_64DIR_2_0ISO_0008
+                ├── T1_MPRAGE_SAG_1_0ISO_0009
+                └── T2_SPACE_SAG_1_0MM_0010
+
+    └── nifti
+        └── ibs0001_T1.nii.gz
+
+```
+The raw DTI directories in the RawDicom directory are  DTI_SMS_64DIR_2_0ISO_0002 (for AP) and PA_INVERT_DTI_SMS_64DIR_2_0ISO_0008 (for PA). Also, the nifti directory must contain the T1 file (Ex: ibs0001_T1.nii.gz). 
+
+
+After the DTI processing for each participant is done, the preprocessed files are stored in the directory DTI. 
+```
+ibs0001
+  ├── DTI
+  ├── nifti
+  └── RawDicom
+```
+The structural connectome csv file is stored in a directory specified at the beginning of the script. For each participant three connectome matrices are stored, namely Cortico-cortical, Subcortico-Subcortical, and Thalamo-cortical.  
 
 ## Preprocessing Steps
 
@@ -54,8 +111,6 @@ In the IBS heterobrainx workstation, all the necessary software is installed, an
     - Refine the streamlines if necessary to improve their accuracy and alignment with the underlying anatomy.
 
 13. **Create Connectome:**
-    - Generate a connectome using [tck2connectome](https://mrtrix.readthedocs.io/en/dev/reference/commands/tck2connectome.html) from the (refined) streamlines and store the connectome as a CSV file. The ROIs in the connectome correspond to the atlas specified while creating the connectome. We use the Desikan-Killany atlas.
+    - Generate a connectome using [tck2connectome](https://mrtrix.readthedocs.io/en/dev/reference/commands/tck2connectome.html) from the (refined) streamlines and store the connectome as a CSV file. The ROIs in the connectome correspond to the atlas specified while creating the connectome. We use the Desikan-Killany atlas with 68 cortical regions  and 16 subcortical regions  (including both left and right hemishpere) and thus, the connectome matrix is of size 84-by-84. 
 14. **Connectome folder**
 - Move the individual connectome csv file to the connectome folder. Since, in my project I deal with brain models for individual participants
-
-These preprocessing steps are crucial for preparing DTI data for subsequent analyses, such as connectivity analysis and visualization. It's important to follow these steps carefully to ensure the reliability and validity of the results in DTI studies.
