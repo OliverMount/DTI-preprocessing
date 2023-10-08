@@ -74,7 +74,7 @@ The structural connectome csv file is stored in a directory specified at the beg
 ## Preprocessing Steps
 
 1. **Convert the Raw DICOM Data:**
-   - Convert the raw DICOM DTI Anterior-to-Posterior (AP) and Posterior-to-Anterior (PA) datasets into MIF format (format for data in MRtrix).
+   - Convert the raw DICOM DTI Anterior-to-Posterior (AP) and Posterior-to-Anterior (PA) datasets into MIF format (data format in MRtrix).
    - This conversion yields AP.mif and PA.mif files along with their bval and bvec files. These files are necessary for subsequent processing. Please use *dcm2niix* program in the command line to get the bval and bvec files automatically.
 
 2. **Denoise the Data:**
