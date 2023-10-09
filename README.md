@@ -10,7 +10,7 @@ The processing steps in the script, briefly given below, closely follow the prep
 
 Before running the script, make sure:
 1. Software(s) needed are installed, and path settings are done at the beginning of the script.
-2. Make sure the raw DTI data is in the RawDicom directory, and T1 files are in the nifti directory as indicated below. (Please also see the for details where these directories are formed).
+2. Make sure the raw DTI data is in the RawDicom directory, and T1 files are in the nifti directory as indicated below. (Please see the script SourceImaging.sh in https://github.com/OliverMount/SourceImaging for details about the directory structure for both DTI and T1/T2  preprocessing).
 
 ## Software(s) needed and path settings
 
@@ -18,7 +18,7 @@ The DTI preprocessing requires [MRtrix](https://mrtrix.readthedocs.io/en/3.0.4/i
 
 Please edit the paths setting at the beginning of the shell script according to the path where the softwares are installed on your computer.
 
-In the IBS heterobrainx workstation, all the necessary software is installed, and preprocessing would begin smoothly and would take nearly 2 hours for each participant to extract the fiber tracks.
+In the IBS heterobrainx workstation, all the necessary softwares are installed, and preprocessing would begin smoothly if the paths are set as indicated.It would take nearly 2 hours for each participant from raw file to extracting the fiber tracks to the structural connectome.
 
 ## Directory settings
 
