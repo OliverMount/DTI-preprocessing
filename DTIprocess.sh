@@ -1,10 +1,35 @@
+#!/bin/bash
+# -----------------------------------------------------------------------------
 # DTI preprocessing for Tractography
-# The Preprocessing in this script follows the Deco way
+# Author: Oliver James
+#
+# Description:
+# This script automates the preprocessing of Diffusion Tensor Imaging (DTI) data.
+# It includes various steps such as data conversion, motion correction, and skull stripping, to prepare the data for further analysis.
+#
+# Usage: 
+# ./dti_preprocessing.sh
+#
+# Requirements:
+# - FSL (FMRIB Software Library)
+# - MRtrix3 (Neuroimaging software)
+# - ANTs (Advanced Normalization Tools)
+# - Freesurfer (for generating tissue type data)
+#
+# Important Notes:
+# - Ensure the necessary software is installed and paths are set correctly in the script.
+# - The script should be run within a directory containing participant-specific folders.
+# - Each participant's folder should contain DTI data in the "RawDicom" folder.
+# - Output results, connectome, and other data will be saved in the specified "Connectome" directory.
+#
+# More information on using this script can be found in the documentation or README.md
+#
+# -----------------------------------------------------------------------------
+# DTI preprocessing for Tractography
+# Author : Oliver 
+# Updated: 15th Oct. 2023.
 
-# This script assumes that the DTI orignal scan files are inside .../anatomy/ibsxxxx/RawDicom
-# The processed files are stored in ../anatomy/ibsxxxx/DTI
 
-#proj_folder="SeenUnSeen"
 anatomy_path="/Users/heterobrainx/anatomy"
 proj_raw_path=$anatomy_path
 SUBJECTS_DIR="/Applications/freesurfer/7.3.2/subjects"
