@@ -415,13 +415,9 @@ cd DTI  # cd into the DTI of this participant
 	echo "++ ========================================================="
 
 	cd $proj_raw_path
-done
+done 
 
-# After the anatomical connections are moved the python program below sortes out
-# cortical, subcortial,thalamocortical SC,TD values and their corresponding plots
-
-#python3 obtain_sc_mtx_and_plots.py
-#python3 obtain_td_mtx_and_plots.py	
+# Using the .csv files we could plot the structural connetome 
 
 echo "++ ========================================================="
 echo "++ DTI all done with; PROCEED to Modeling! " 
